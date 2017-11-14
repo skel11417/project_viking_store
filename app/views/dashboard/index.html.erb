@@ -1,0 +1,69 @@
+<h1>Viking Store Analytics Dashboard</h1>
+
+
+<h2>1. Overall Platform</h2>
+
+<!-- <%= render partial: "overall_table", locals: {zone: @zone} %> -->
+<h3>Last 7 Days</h3>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Data</th>
+  </tr>
+  <tr>
+    <td>New users</td>
+    <td>205395</td>
+  </tr>
+  <tr>
+    <td>Orders</td>
+    <td>a number</td>
+  </tr>
+  <tr>
+    <td>New Products</td>
+    <td>a number</td>
+  </tr>
+  <tr>
+    <td>Revenue</td>
+    <td>etioatat</td>
+  </tr>
+  <!-- <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+    </tr>
+  <% end %> -->
+
+
+</table>
+<%= @total_revenue %>
+<h3>Total</h3>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Data</th>
+  </tr>
+  <tr>
+    <td>New users</td>
+    <td><%= @total_num_users %></td>
+  </tr>
+  <tr>
+    <td>Orders</td>
+    <td><%= @total_num_users %></td>
+  </tr>
+  <tr>
+    <td>New Products</td>
+    <td><%= @total_num_products %></td>
+  </tr>
+  <tr>
+    <td>Revenue</td>
+    <td>etioatat</td>
+  </tr>
+  <!-- <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+    </tr>
+  <% end %> -->
+
+
+</table>
