@@ -1,6 +1,6 @@
 Project: Viking Store Admin
 ========================
-
+* Sean Kelly
 ##To Get Going On This Assignment
 - run `rake db:create`
 - run `rake db:migrate`
