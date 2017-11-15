@@ -1,0 +1,20 @@
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Item</th>
+    <th>Data</th>
+  </tr>
+
+  <% data_array = [
+      ["New Users", num_users(days)],
+      ["Orders", num_orders(days)],
+      ["New Products", num_products(days)],
+      ["Revenue", revenue(days)]
+    ] %>
+
+  <% data_array.each do |line| %>
+    <tr>
+      <td><%= line[0] %> </td>
+      <td><%= line[1] %> </td>
+    </tr>
+  <% end %>
+</table>

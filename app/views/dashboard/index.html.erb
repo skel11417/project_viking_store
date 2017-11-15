@@ -1,68 +1,36 @@
-<h1>Viking Store Analytics Dashboard</h1>
-
-<div class="box">
-  <h2>1. Overall Platform</h2>
-
-  <!-- <%= render partial: "overall_table", locals: {zone: @zone} %> -->
-  <h3>Last 7 Days</h3>
-  <table>
-    <tr>
-      <th>Item</th>
-      <th>Data</th>
-    </tr>
-    <tr>
-      <td>New users</td>
-      <td>205395</td>
-    </tr>
-    <tr>
-      <td>Orders</td>
-      <td>a number</td>
-    </tr>
-    <tr>
-      <td>New Products</td>
-      <td>a number</td>
-    </tr>
-    <tr>
-      <td>Revenue</td>
-      <td>etioatat</td>
-    </tr>
-    <!-- <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-      </tr>
-    <% end %> -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Viking Store Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/master.css">
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+  </head>
+  <body>
+    <h1>Viking Store Analytics Dashboard</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>1. Overall Platform</h2>
+          <h3>Last 7 Days</h3>
+          <%= render partial: "overall_table", locals: {days: 7} %>
+          <h3> Last 30 Days</h3>
+          <%= render partial: "overall_table", locals: {days: 30} %>
+          <h3>Total</h3>
+          <%= render partial: "overall_table", locals: {days: nil} %>
+        </div>
+        <div class="col-md-6">
+          <h2>2. User Demographics and Behavior </h2>
 
 
-  </table>
-  <%= @total_revenue %>
-  <h3>Total</h3>
-  <table>
-    <tr>
-      <th>Item</th>
-      <th>Data</th>
-    </tr>
-    <tr>
-      <td>New users</td>
-      <td><%= @total_num_users %></td>
-    </tr>
-    <tr>
-      <td>Orders</td>
-      <td><%= @total_num_orders %></td>
-    </tr>
-    <tr>
-      <td>New Products</td>
-      <td><%= @total_num_products %></td>
-    </tr>
-    <tr>
-      <td>Revenue</td>
-      <td>etioatat</td>
-    </tr>
-    <!-- <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-      </tr>
-    <% end %> -->
-  </table>
-</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>3. Order Statistics</h2>
+        </div>
+        <div class="col-md-6">
+          <h2>4. Time Series Data</h2>
+        </div>
+      </div>
+    </div>
