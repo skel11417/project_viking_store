@@ -5,10 +5,10 @@
   </tr>
 
   <% data_array = [
-      ["New Users", num_users(days)],
-      ["Orders", num_orders(days)],
-      ["New Products", num_products(days)],
-      ["Revenue", revenue(days)]
+      ["New Users", User.num_users(days)],
+      ["Orders", Order.num_orders(days)],
+      ["New Products", Product.num_products(days)],
+      ["Revenue", "$#{OrderContent.revenue(days)}"]
     ] %>
 
   <% data_array.each do |line| %>
