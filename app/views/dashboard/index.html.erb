@@ -19,10 +19,38 @@
           <h3>Total</h3>
           <%= render partial: "overall_table", locals: {days: nil} %>
         </div>
+
         <div class="col-md-6">
           <h2>2. User Demographics and Behavior </h2>
+          <h3>Top 3 States users live in (billing)</h3>
+          <table class="table table-striped table-bordered">
+            <tr>
+              <th>Item</th>
+              <th>Data</th>
+            </tr>
+            <% User.top_3_states.each do |line| %>
+              <tr>
+                <td><%= line.state_name %> </td>
+                <td><%= line.all_users %> </td>
+              </tr>
+            <% end %>
+          </table>
 
-
+          <h3>Top 3 Cities users live in (billing)</h3>
+          <table class="table table-striped table-bordered">
+            <tr>
+              <th>Item</th>
+              <th>Data</th>
+            </tr>
+            <% User.top_3_cities.each do |line| %>
+              <tr>
+                <td><%= line.city_name %> </td>
+                <td><%= line.all_users %> </td>
+              </tr>
+            <% end %>
+          </table>
+          <h3>
+          </h3>
         </div>
       </div>
       <div class="row">

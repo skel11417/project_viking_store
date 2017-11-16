@@ -13,4 +13,18 @@ class User < ApplicationRecord
     end
   end
 
+  def self.top_3_states
+    select("states.name as state_name, count(users.id) as all_users").
+    joins("JOIN addresses ON users.billing_id = addresses.id
+        JOIN states ON addresses.state_id = states.id").
+    group("state_name").order("all_users DESC").limit(3)
+  end
+
+  def self.top_3_cities
+    select("cities.name as city_name, count(users.id) as all_users").
+    joins("JOIN addresses ON users.billing_id = addresses.id
+        JOIN cities ON addresses.city_id = cities.id").
+    group("city_name").order("all_users DESC").limit(3)
+  end
+
 end
