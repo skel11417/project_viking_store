@@ -1,32 +1,25 @@
 module DashboardHelper
-  # def num_orders(num_days=nil)
-  #   if num_days
-  #     Order.where(orders: { created_at: time_range(num_days)}).count
-  #   else
-  #     Order.count
-  #   end
-  # end
-  #
-  # def num_products(num_days=nil)
-  #   if num_days
-  #     Product.where(products: { created_at: time_range(num_days)}).count
-  #   else
-  #     Product.count
-  #   end
-  # end
 
-  # def revenue(num_days=nil)
-  #   if num_days
-  #     "chick file"
-  #   else
-  #       Order.where.not(:checkout_date => nil).joins(:order_contents)
-  #       Order.joins(:order_contents)
-  #
-  #   end
-  # end
-
-  def time_range(num_days)
-    (Time.now.midnight - num_days.day)..Time.now.midnight
+  def overall_platform(days=nil)
+      [["New Users", User.num_users(days)],
+        ["Orders", Order.num_orders(days)],
+        ["New Products", Product.num_products(days)],
+        ["Revenue", "$#{OrderContent.revenue(days)}"]
+      ]
   end
+
+  def order_statistics(days=nil)
+      [["Number of Orders", Order.num_orders(days)],
+        ["Total Revenue", "$#{OrderContent.revenue(days)}"],
+        ["Average Order Value", "$#{Order.avg_value(days)}"],
+        ["Largest Order Value", "$#{Order.largest_value(days).order_total}"]
+      ]
+  end
+
+
+
+  # def time_range(num_days)
+  #   (Time.now.midnight - num_days.day)..Time.now.midnight
+  # end
 
 end

@@ -4,17 +4,10 @@
     <th>Data</th>
   </tr>
 
-  <% data_array = [
-      ["New Users", User.num_users(days)],
-      ["Orders", Order.num_orders(days)],
-      ["New Products", Product.num_products(days)],
-      ["Revenue", "$#{OrderContent.revenue(days)}"]
-    ] %>
-
-  <% data_array.each do |line| %>
-    <tr>
-      <td><%= line[0] %> </td>
-      <td><%= line[1] %> </td>
-    </tr>
-  <% end %>
+    <% data_array.each do |line| %>
+      <tr>
+        <td><%= line[0] %> </td>
+        <td><%= line[1] %> </td>
+      </tr>
+    <% end %>
 </table>

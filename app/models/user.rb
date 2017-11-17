@@ -27,4 +27,17 @@ class User < ApplicationRecord
     group("city_name").order("all_users DESC").limit(3)
   end
 
+  def self.highest_order
+    # select("orders.user_id, (products.price * order_contents.quantity) as order_total").
+    # joins("JOIN order_contents ON order_contents.order_id = orders.id JOIN products on order_contents.product_id = products.id").
+    # where.not('orders.checkout_date' => nil).
+    # group("order_total, orders.user_id").
+    # order("order_total DESC").
+    # limit(1)
+  end
+
+  def self.most_orders
+
+  end
+
 end
