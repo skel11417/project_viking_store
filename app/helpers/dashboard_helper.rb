@@ -16,6 +16,14 @@ module DashboardHelper
       ]
   end
 
+  def top_users
+    [["Highest Single Order Value", User.highest_single_order],
+     ["Highest Lifetime Value", User.highest_lifetime],
+     ["Highest Average Order", User.highest_average_order],
+     ["Most Orders Placed", User.most_orders]
+    ]
+
+  end
 
 
   # def time_range(num_days)

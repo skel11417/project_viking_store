@@ -39,4 +39,29 @@ class Order < ApplicationRecord
       first
     end
   end
+
+  def self.orders_on_day(day_offset)
+    select(:id).
+    where(:checkout_date => (Time.now.midnight - day_offset.days)..(Time.now.midnight + 1.day - day_offset.days)).
+    count
+  end
+
+  def self.revenue_on_day(day_offset)
+    joins("JOIN order_contents ON order_contents.order_id = orders.id JOIN products on order_contents.product_id = products.id").
+    where(:checkout_date => (Time.now.midnight - day_offset.days)..(Time.now.midnight + 1.day - day_offset.days)).
+    sum("(order_contents.quantity * products.price)")
+  end
+
+  def self.orders_in_week(week_offset)
+    select(:id).
+    where(:checkout_date => (Time.now.midnight - 1.weeks - week_offset.weeks)..(Time.now.midnight - week_offset.weeks)).
+    count
+  end
+
+  def self.revenue_in_week(week_offset)
+    joins("JOIN order_contents ON order_contents.order_id = orders.id JOIN products on order_contents.product_id = products.id").
+    where(:checkout_date => (Time.now.midnight - 1.weeks - week_offset.weeks)..(Time.now.midnight - week_offset.weeks)).
+    sum("(order_contents.quantity * products.price)")
+  end
+
 end

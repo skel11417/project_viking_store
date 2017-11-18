@@ -27,17 +27,40 @@ class User < ApplicationRecord
     group("city_name").order("all_users DESC").limit(3)
   end
 
-  def self.highest_order
-    # select("orders.user_id, (products.price * order_contents.quantity) as order_total").
-    # joins("JOIN order_contents ON order_contents.order_id = orders.id JOIN products on order_contents.product_id = products.id").
-    # where.not('orders.checkout_date' => nil).
-    # group("order_total, orders.user_id").
-    # order("order_total DESC").
-    # limit(1)
+  def self.highest_single_order
+      select("users.first_name as first_name, users.last_name as last_name, (products.price * order_contents.quantity) AS total").
+      joins("JOIN orders ON orders.user_id = users.id JOIN order_contents on order_contents.order_id = orders.id JOIN products ON order_contents.product_id = products.id").
+      where("orders.checkout_date IS NOT NULL").
+      group("first_name, last_name, total").
+      order("total DESC").
+      first
+  end
+
+  def self.highest_lifetime
+    select("users.first_name as first_name, users.last_name as last_name, SUM(products.price * order_contents.quantity) AS total").
+    joins("JOIN orders ON orders.user_id = users.id JOIN order_contents on order_contents.order_id = orders.id JOIN products ON order_contents.product_id = products.id").
+    where("orders.checkout_date IS NOT NULL").
+    group("first_name, last_name").
+    order("total DESC").
+    first
+  end
+
+  def self.highest_average_order
+    select("users.first_name as first_name, users.last_name as last_name , SUM(products.price * order_contents.quantity)/(count (distinct orders.id)) as total").
+    joins("JOIN orders ON orders.user_id = users.id JOIN order_contents on order_contents.order_id = orders.id JOIN products ON order_contents.product_id = products.id").
+    where("orders.checkout_date IS NOT NULL").
+    group("first_name, last_name").
+    order("total DESC").
+    first
   end
 
   def self.most_orders
-
+    select("users.first_name as first_name, users.last_name as last_name, count(distinct orders.id) as total").
+    joins("JOIN orders on orders.user_id = users.id").
+    where("orders.checkout_date IS NOT NULL").
+    group("first_name, last_name").
+    order("total DESC").
+    first
   end
 
 end
