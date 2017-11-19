@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SolutionVikingStore</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <title>Viking Store Admin Portal</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/master.css">
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 </head>
 <body>
-
-<%= yield %>
+  <div id="masthead">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1>Viking Store Admin Portal</h1>
+          </div>
+        </div>
+    </div><!--/container-->
+  </div><!--/masthead-->
+  <div class="container">
+    <div class="row">
+        <!--left-->
+        <div class="col-md-3" id="leftCol">
+          <%= render 'layouts/navigation' %>
+        </div><!--/left-->
+      <div class="col-md-9">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
