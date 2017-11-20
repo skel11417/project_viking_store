@@ -1,1 +1,27 @@
-This is the categories index
+<h2 id="heading-users" class="text-center">Product Categories</h2>
+<br class="text-center">
+  <a class="btn btn-primary" href="#" role="button">Create New Category</a></button>
+</br>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>SHOW</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td><%= link_to("SHOW", category_path(category)) %></td>
+        <td><%= link_to("EDIT", edit_category_path(category)) %></td>
+        <td><%= link_to("DELETE", '/delete') %></td>
+
+
+    </tr>
+    <% end %>
+  </table>
