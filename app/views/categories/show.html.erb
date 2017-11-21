@@ -4,6 +4,9 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<p><%= link_to("Edit Category", edit_category_path) %></p>
+<p><%= link_to("Delete Category", "#") %></p>
+
 <table>
   <tr>
     <td><b>Category ID:</b></td>
@@ -20,9 +23,10 @@
     <th>ID</th>
     <th>Name</th>
   </tr>
-    <td>@product.id
-
-
-
-
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %> </td>
+      <td><%= link_to(product.name, product_path(product)) %> </td>
+    </tr>
+  <% end %>
 </table>

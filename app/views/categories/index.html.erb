@@ -1,6 +1,6 @@
 <h2 id="heading-users" class="text-center">Product Categories</h2>
 <br class="text-center">
-  <a class="btn btn-primary" href="#" role="button">Create New Category</a></button>
+  <%= link_to("Create New Category", new_category_path, :class => "btn btn-primary") %>
 </br>
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
@@ -19,9 +19,8 @@
         <td><%= category.name %></td>
         <td><%= link_to("SHOW", category_path(category)) %></td>
         <td><%= link_to("EDIT", edit_category_path(category)) %></td>
-        <td><%= link_to("DELETE", '/delete') %></td>
-
-
+        <td><%= button_to("DELETE", category_path(category), method: :delete,
+                                  data: { confirm: "You sure?" }) %></td>
     </tr>
     <% end %>
   </table>

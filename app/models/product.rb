@@ -9,4 +9,6 @@ class Product < ApplicationRecord
       Product.count
     end
   end
+
+  
 end

@@ -1,5 +1,5 @@
-<h2 id="heading-users" class="text-center">Edit Category <%= @category.id %>: <%= @category.name %></h2>
-
+<h2 id="heading-users" class="text-center">New Category</h2>
+<%= @category.errors.first %>
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
@@ -14,7 +14,5 @@
     <td> <%= f.text_field :name %> </td>
   </tr>
 </table>
-    <%= f.submit "Update Category", :class => "btn btn-primary" %>
+    <%= f.submit "Create Category", :class => "btn btn-primary" %>
     <% end %>
-  <br>  <%= link_to("Delete Category", @category, :method => :delete,
-                              data: { confirm: "You sure?" }) %>
