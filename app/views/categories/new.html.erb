@@ -1,5 +1,5 @@
 <h2 id="heading-users" class="text-center">New Category</h2>
-<%= @category.errors.first %>
+<%= @category.errors.full_messages[0] %>
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>

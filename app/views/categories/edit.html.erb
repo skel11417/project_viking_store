@@ -6,7 +6,7 @@
 <table>
   <tr>
     <td><b>Category ID:</b></td>
-    <td><%= @category.id %></td>
+    <td>N/A</td>
   </tr>
   <tr>
     <%= form_for @category do |f| %>
@@ -16,5 +16,6 @@
 </table>
     <%= f.submit "Update Category", :class => "btn btn-primary" %>
     <% end %>
-  <br>  <%= link_to("Delete Category", @category, :method => :delete,
+  <br>  <%= button_to("Delete Category", @category, :method => :delete,
                               data: { confirm: "You sure?" }) %>
+  </br>

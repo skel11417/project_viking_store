@@ -5,7 +5,8 @@
 <% end %>
 
 <p><%= link_to("Edit Category", edit_category_path) %></p>
-<p><%= link_to("Delete Category", "#") %></p>
+<p><%= button_to("Delete Category", @category, :method => :delete,
+                            data: { confirm: "You sure?" }) %></p>
 
 <table>
   <tr>
