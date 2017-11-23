@@ -5,11 +5,17 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @times_ordered = "ex"
+    @carts_in = "machina"
+    @times_ordered = Order.where("orders.checkout_date is not null").
+    joins("JOIN order_contents ON order_contents.order_id = orders.id").
+    where(["product_id = :product_id", {product_id: @product.id}])
   end
 
   # GET /products/new
