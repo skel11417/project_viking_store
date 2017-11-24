@@ -1,6 +1,10 @@
 class Product < ApplicationRecord
   has_many :orders, through: :order_contents
   belongs_to :category
+  validates :name, :price, :category_id,
+    :presence => true
+  validates :price, numericality: {:less_than_or_equal_to => 10000}
+
 
   def self.num_products(num_days=nil)
     if num_days
@@ -10,5 +14,5 @@ class Product < ApplicationRecord
     end
   end
 
-  
+
 end

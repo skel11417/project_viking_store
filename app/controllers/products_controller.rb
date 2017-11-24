@@ -5,22 +5,23 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @times_ordered = "ex"
-    @carts_in = "machina"
     @times_ordered = Order.where("orders.checkout_date is not null").
     joins("JOIN order_contents ON order_contents.order_id = orders.id").
-    where(["product_id = :product_id", {product_id: @product.id}])
+    where(["product_id = :product_id", {product_id: @product.id}]).count
+    @carts_in = Order.where("orders.checkout_date is null").
+    joins("JOIN order_contents ON order_contents.order_id = orders.id").
+    where(["product_id = :product_id", {product_id: @product.id}]).count
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @categories_ordered = Category.order(:name)
   end
 
   # GET /products/1/edit
@@ -75,6 +76,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.fetch(:product, {})
+      params.require(:product).permit(:name, :price, :category_id)
     end
 end

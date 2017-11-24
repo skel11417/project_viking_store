@@ -1,18 +1,27 @@
-<h2 id="heading-users" class="text-center">New Category</h2>
-<%= @category.errors.full_messages[0] %>
+<h2 id="heading-users" class="text-center">New Product</h2>
+<%= @product.errors.full_messages[0] %>
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 <table>
   <tr>
-    <td><b>Category ID:</b></td>
-    <td><%= @category.id %></td>
+    <td><b>Product ID:</b></td>
+    <td><%= @product.id %></td>
   </tr>
   <tr>
-    <%= form_for @category do |f| %>
+    <%= form_for @product do |f| %>
     <td><b><%= f.label :name, "Name:" %></b></td>
     <td> <%= f.text_field :name %> </td>
   </tr>
+    <tr>
+    <td><b><%= f.label :price, "Price:" %></b></td>
+    <td> <%= f.text_field :price %> </td>
+  </tr>
+  <tr>
+    <td><b><%= f.label :category, "Category:" %></b></td>
+    <td> <%= f.collection_select :category_id, Category.order(:name), :id, :name, {:selected => Category.order(:name).first} %> </td>
+  </tr>
+
 </table>
-    <%= f.submit "Create Category", :class => "btn btn-primary" %>
+    <%= f.submit "Create Product", :class => "btn btn-primary" %>
     <% end %>
