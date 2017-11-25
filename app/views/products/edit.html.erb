@@ -1,6 +1,30 @@
-<h1>Editing Product</h1>
+<h2 id="heading-users" class="text-center">Edit Product: <%= @product.id %></h2>
+<%= @product.errors.full_messages[0] %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<table>
+  <tr>
+    <td><b>Product ID:</b></td>
+    <td><%= @product.id %></td>
+  </tr>
+  <tr>
+    <%= form_for @product do |f| %>
+    <td><b><%= f.label :name, "Name:" %></b></td>
+    <td> <%= f.text_field :name %> </td>
+  </tr>
+    <tr>
+    <td><b><%= f.label :price, "Price:" %></b></td>
+    <td> <%= f.text_field :price %> </td>
+  </tr>
+  <tr>
+    <td><b><%= f.label :category, "Category:" %></b></td>
+    <td> <%= f.collection_select :category_id, Category.order(:name), :id, :name, {:selected => Category.order(:name).first} %> </td>
+  </tr>
 
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+</table>
+    <%= f.submit "Update Product", :class => "btn btn-primary" %>
+    <% end %>
+  <br>  <%= button_to("Delete Product", @product, :method => :delete,
+                              data: { confirm: "You sure?" }) %>
+  </br>

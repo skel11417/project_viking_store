@@ -21,6 +21,7 @@
     <td><b><%= f.label :category, "Category:" %></b></td>
     <td> <%= f.collection_select :category_id, Category.order(:name), :id, :name, {:selected => Category.order(:name).first} %> </td>
   </tr>
+  <% f.text_field :sku, :value => Faker::Code.ean %>
 
 </table>
     <%= f.submit "Create Product", :class => "btn btn-primary" %>
