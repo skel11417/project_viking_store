@@ -25,6 +25,6 @@
 </table>
     <%= f.submit "Update Product", :class => "btn btn-primary" %>
     <% end %>
-  <br>  <%= button_to("Delete Product", @product, :method => :delete,
+  <br>  <%= link_to("Delete Product", @product, :method => :delete,
                               data: { confirm: "You sure?" }) %>
   </br>
