@@ -19,7 +19,7 @@
         <td><%= category.name %></td>
         <td><%= link_to("SHOW", category_path(category)) %></td>
         <td><%= link_to("EDIT", edit_category_path(category)) %></td>
-        <td><%= button_to("DELETE", category_path(category), method: :delete,
+        <td><%= link_to("DELETE", category_path(category), method: :delete,
                                   data: { confirm: "You sure?" }) %></td>
     </tr>
     <% end %>

@@ -1,15 +1,13 @@
 <h2 id="heading-users" class="text-center">New Product</h2>
 <%= @product.errors.full_messages[0] %>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+
+<%= form_for @product do |f| %>
 <table>
   <tr>
     <td><b>Product ID:</b></td>
     <td><%= @product.id %></td>
   </tr>
   <tr>
-    <%= form_for @product do |f| %>
     <td><b><%= f.label :name, "Name:" %></b></td>
     <td> <%= f.text_field :name %> </td>
   </tr>
@@ -21,8 +19,8 @@
     <td><b><%= f.label :category, "Category:" %></b></td>
     <td> <%= f.collection_select :category_id, Category.order(:name), :id, :name, {:selected => Category.order(:name).first} %> </td>
   </tr>
-  <%= f.hidden_field :sku, :value => Faker::Code.ean %>
 
 </table>
-    <%= f.submit "Create Product", :class => "btn btn-primary" %>
-    <% end %>
+<%= f.hidden_field :sku, :value => Faker::Code.ean %>
+<%= f.submit "Create Product", :class => "btn btn-primary" %>
+<% end %>
