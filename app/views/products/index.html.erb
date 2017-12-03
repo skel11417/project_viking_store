@@ -2,10 +2,7 @@
 <br class="text-center">
   <%= link_to("Create New Product", new_product_path, :class => "btn btn-primary") %>
 </br>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-# unless flash.empty?
+
 <table class="table table-striped table-bordered">
   <tr>
     <th>ID</th>

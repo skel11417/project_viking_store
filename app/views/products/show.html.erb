@@ -1,10 +1,5 @@
 <h2 id="heading-users" class="text-center">Product <%= @product.id %></h2>
 
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-
 <h3>Product Information</h3>
 <table>
   <tr>
@@ -38,6 +33,6 @@
 </table>
 
 <p><%= link_to("Edit Product", edit_product_path) %></p>
-<p><%= button_to("Delete Product", @product, :method => :delete,
+<p><%= link_to("Delete Product", @product, :method => :delete,
                             data: { confirm: "You sure?" }) %></p>
 <%= link_to 'Back', products_path %>
