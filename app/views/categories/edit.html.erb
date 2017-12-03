@@ -1,21 +1,18 @@
 <h2 id="heading-users" class="text-center">Edit Category <%= @category.id %>: <%= @category.name %></h2>
 
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<%= form_for @category do |f| %>
 <table>
   <tr>
     <td><b>Category ID:</b></td>
     <td>N/A</td>
   </tr>
   <tr>
-    <%= form_for @category do |f| %>
     <td><b><%= f.label :name, "Name:" %></b></td>
     <td> <%= f.text_field :name %> </td>
   </tr>
 </table>
     <%= f.submit "Update Category", :class => "btn btn-primary" %>
     <% end %>
-  <br>  <%= button_to("Delete Category", @category, :method => :delete,
+  <br>  <%= link_to("Delete Category", @category, :method => :delete,
                               data: { confirm: "You sure?" }) %>
   </br>

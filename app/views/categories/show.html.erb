@@ -1,11 +1,6 @@
 <h2 id="heading-users" class="text-center">Category <%= @category.id %>: <%= @category.name %></h2>
-
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
 <p><%= link_to("Edit Category", edit_category_path) %></p>
-<p><%= button_to("Delete Category", @category, :method => :delete,
+<p><%= link_to("Delete Category", @category, :method => :delete,
                             data: { confirm: "You sure?" }) %></p>
 
 <table>
