@@ -1,5 +1,15 @@
 class User < ApplicationRecord
-  belongs_to :order
+  has_many :orders
+  has_many :addresses
+  has_many :products, through: :order_contents
+
+  def default_billing_address_id
+    billing_id
+  end
+
+  def default_shipping_address_id
+    shipping_id
+  end
 
   def name
     "#{first_name} #{last_name}"
