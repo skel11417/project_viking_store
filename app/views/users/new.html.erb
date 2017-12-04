@@ -1,0 +1,38 @@
+<h2 id="heading-users" class="text-center">Product <%= @product.id %></h2>
+
+<h3>Product Information</h3>
+<table>
+  <tr>
+    <td><b>Product ID:</b></td>
+    <td><%= @product.id %></td>
+  </tr>
+  <tr>
+    <td><b>Name:</b></td>
+    <td><%= @product.name %></td>
+  </tr>
+  <tr>
+    <td><b>Price:</b></td>
+    <td>$<%= @product.price %></td>
+  </tr>
+  <tr>
+    <td><b>Category:</b></td>
+    <td><%= @product.category.name %></td>
+  </tr>
+</table>
+
+<h3>Product Statistics</h3>
+<table>
+  <tr>
+    <td>Times Ordered</td>
+    <td><%= @times_ordered %></td>
+  </tr>
+    <tr>
+      <td>Carts In </td>
+      <td><%= @carts_in %></td>
+    </tr>
+</table>
+
+<p><%= link_to("Edit Product", edit_product_path) %></p>
+<p><%= link_to("Delete Product", @product, :method => :delete,
+                            data: { confirm: "You sure?" }) %></p>
+<%= link_to 'Back', products_path %>
