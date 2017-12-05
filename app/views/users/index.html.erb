@@ -26,8 +26,8 @@
         <!-- # state -->
         <td><%= user.state %></td>
         <!-- # orders -->
-        <td><%= link_to user.num_orders, order_history_path(user) %></td>
-        <td><%= user.last_order %></td>
+        <td><%= link_to "#{user.num_orders}", order_history_path(user) %></td>
+        <td><%= user.last_order_date %></td>
         <td><%= link_to("SHOW", user_path(user)) %></td>
         <td><%= link_to("EDIT", edit_user_path(user)) %></td>
         <td><%= link_to("DELETE", user_path(user), method: :delete,

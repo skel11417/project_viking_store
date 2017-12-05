@@ -21,6 +21,8 @@ gem 'tzinfo-data'
 gem 'bootstrap-sass'
 
 gem 'hirb'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

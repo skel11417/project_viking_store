@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :orders
   has_many :addresses
+  belongs_to :billing_address, class_name: "Address", :foreign_key => :billing_id
+  belongs_to :shipping_address, class_name: "Address", :foreign_key => :shipping_id
   has_many :products, through: :order_contents
 
   def default_billing_address_id
@@ -12,11 +14,12 @@ class User < ApplicationRecord
   end
 
   def join_date
-
+    created_at.strftime("%F")
   end
-  
-  def last_order
 
+  def last_order_date
+    d = self.orders.where("checkout_date IS NOT NULL").order("checkout_date DESC").first
+    d.checkout_date.strftime("%F")
   end
 
   def full_name
@@ -24,15 +27,15 @@ class User < ApplicationRecord
   end
 
   def city
-
+    shipping_address.city.name
   end
 
   def state
-
+    shipping_address.state.name
   end
 
   def num_orders
-
+     orders.where("checkout_date IS NOT NULL").count
   end
 
   def self.num_users(num_days=nil)

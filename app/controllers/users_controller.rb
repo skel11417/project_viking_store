@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.includes(:shipping_address)
   end
 
   def order_history
-    
+
   end
 
 end
