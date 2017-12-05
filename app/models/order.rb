@@ -3,6 +3,18 @@ class Order < ApplicationRecord
   has_many :order_contents
   has_many :products, through: :order_contents
 
+  def value
+    sum = 0
+    order_contents.each do |item|
+      sum += item.quantity * item.product.price
+    end
+    sum
+  end
+
+  def status
+    checkout_date ? "PLACED" : "UNPLACED"
+  end
+
   def self.num_orders(num_days=nil)
     if num_days
       Order.where("created_at > ?", Time.now - num_days.days).count

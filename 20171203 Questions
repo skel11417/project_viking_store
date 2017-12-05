@@ -1,2 +1,5 @@
 1. for default_billing_address_id, necessary to change name if no actual
 relation with other table?
+2. optimize searches on User index and show view
+3. sum cart contents
+4. order placed logic in view?

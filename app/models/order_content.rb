@@ -3,6 +3,11 @@ class OrderContent < ApplicationRecord
   belongs_to :product
 
 
+  def cart_value
+
+
+  end
+
   def self.revenue(num_days=nil)
     if num_days
       joins(

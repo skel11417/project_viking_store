@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :orders
+  has_many :credit_cards
   has_many :addresses
   belongs_to :billing_address, class_name: "Address", :foreign_key => :billing_id
   belongs_to :shipping_address, class_name: "Address", :foreign_key => :shipping_id
@@ -11,6 +12,18 @@ class User < ApplicationRecord
 
   def default_shipping_address_id
     shipping_id
+  end
+
+  def bill_address_to_s
+    address_to_s(billing_address)
+  end
+
+  def ship_address_to_s
+    address_to_s(shipping_address)
+  end
+
+  def address_to_s(a)
+    "#{a.street_address}, #{a.city.name}, #{a.state.name}, #{a.zip_code}"
   end
 
   def join_date

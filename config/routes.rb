@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
   get 'users/:id/order_history', to: 'users#order_history', as: :order_history
 
-  resources :users, :categories, :products
+  resources :users, :categories, :products, :orders, :addresses
 end
