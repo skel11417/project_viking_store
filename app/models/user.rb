@@ -18,8 +18,12 @@ class User < ApplicationRecord
   end
 
   def last_order_date
-    d = self.orders.where("checkout_date IS NOT NULL").order("checkout_date DESC").first
-    d.checkout_date.strftime("%F")
+    d = orders.where("checkout_date IS NOT NULL").order("checkout_date DESC").first
+    if d
+      d.checkout_date.strftime("%F")
+    else
+      "n/a"
+    end
   end
 
   def full_name
