@@ -11,8 +11,28 @@ class User < ApplicationRecord
     shipping_id
   end
 
-  def name
+  def join_date
+
+  end
+  
+  def last_order
+
+  end
+
+  def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def city
+
+  end
+
+  def state
+
+  end
+
+  def num_orders
+
   end
 
   def self.num_users(num_days=nil)

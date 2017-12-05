@@ -18,13 +18,19 @@
   </tr>
   <% @users.each do |user| %>
     <tr>
-        <td><%= product.id %></td>
-        <td><%= product.name %></td>
-        <td>$<%= product.price %></td>
-        <td><%= link_to product.category.name, category_path(product.category.id) %></td>
-        <td><%= link_to("SHOW", product_path(product)) %></td>
-        <td><%= link_to("EDIT", edit_product_path(product)) %></td>
-        <td><%= link_to("DELETE", product_path(product), method: :delete,
+        <td><%= user.id %></td>
+        <td><%= user.full_name %></td>
+        <td><%= user.join_date %></td>
+
+        <td><%= user.city %></td>
+        <!-- # state -->
+        <td><%= user.state %></td>
+        <!-- # orders -->
+        <td><%= link_to user.num_orders, order_history_path(user) %></td>
+        <td><%= user.last_order %></td>
+        <td><%= link_to("SHOW", user_path(user)) %></td>
+        <td><%= link_to("EDIT", edit_user_path(user)) %></td>
+        <td><%= link_to("DELETE", user_path(user), method: :delete,
                                   data: {confirm: "You sure?"} ) %></td>
     </tr>
     <% end %>
