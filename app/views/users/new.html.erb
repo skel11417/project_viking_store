@@ -1,0 +1,34 @@
+<h2 id="heading-users" class="text-center">New User</h2>
+<% if @user.errors %>
+  <% @user.errors.full_messages.each do |msg| %>
+  <br>  <%= msg %>
+  <% end %>
+<% end %>
+
+<div class="box">
+  <%= form_for @user do |f| %>
+  <table>
+    <tr>
+      <td><b><%= f.label :first_name, "First Name:" %></b></td>
+      <td> <%= f.text_field :first_name %> </td>
+    </tr>
+    <tr>
+      <td><b><%= f.label :last_name, "Last Name:" %></b></td>
+      <td> <%= f.text_field :last_name %> </td>
+    </tr>
+      <tr>
+      <td><b><%= f.label :email, "Email:" %></b></td>
+      <td> <%= f.text_field :email %> </td>
+    </tr>
+  </table>
+
+  <!-- <p><b><%= f.label :category, "Default Billing Address:" %></b>
+       <br><%= f.collection_select :billing_id, Address.all, :id, :street_address, {:selected => Address.first} %>
+     </p>
+  <p><b><%= f.label :category, "Default Shipping Address:" %></b>
+     <br><%= f.collection_select :shipping_id, Address.all, :id, :street_address, {:selected => Address.first} %>
+</p> -->
+<p>  <%= f.submit "Create User", :class => "btn btn-primary" %>
+  <% end %>
+
+</div>

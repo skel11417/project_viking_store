@@ -3,3 +3,5 @@ relation with other table?
 2. optimize searches on User index and show view
 3. sum cart contents
 4. order placed logic in view?
+5. what's the relationship between @user in new and create?
+6. if @user.addresses.first (show view)

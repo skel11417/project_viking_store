@@ -1,0 +1,40 @@
+<h2 id="heading-users" class="text-center">Edit User <%= @user.id %>: <%= @user.full_name %></h2>
+<% if @user.errors %>
+  <% @user.errors.full_messages.each do |msg| %>
+  <br>  <%= msg %>
+  <% end %>
+<% end %>
+
+<div class="box">
+  <%= form_for @user do |f| %>
+  <table>
+    <tr>
+      <td><b><%= f.label :first_name, "First Name:" %></b></td>
+      <td> <%= f.text_field :first_name %> </td>
+    </tr>
+    <tr>
+      <td><b><%= f.label :last_name, "Last Name:" %></b></td>
+      <td> <%= f.text_field :last_name %> </td>
+    </tr>
+      <tr>
+      <td><b><%= f.label :email, "Email:" %></b></td>
+      <td> <%= f.text_field :email %> </td>
+    </tr>
+  </table>
+  <% if @user.billing_id %>
+    <p><b><%= f.label :category, "Default Billing Address:" %></b>
+       <br><%= f.collection_select :billing_id, @user_addresses, :id, :street_address %>
+     </p>
+   <% end %>
+   <% if @user.shipping_id %>
+  <p><b><%= f.label :category, "Default Shipping Address:" %></b>
+     <br><%= f.collection_select :shipping_id, @user_addresses, :id, :street_address %>
+   </p>
+   <% end %>
+  <p> <%= link_to "View Saved Addresses", addresses_path %></p>
+<p>  <%= f.submit "Update #{@user.full_name}", :class => "btn btn-primary" %></p>
+  <% end %>
+<p><%= link_to("Delete #{@user.full_name}", @user, :method => :delete,
+  data: { confirm: "Are you sure?" }) %>
+
+</div>

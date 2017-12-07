@@ -21,11 +21,13 @@
         <td><%= user.id %></td>
         <td><%= user.full_name %></td>
         <td><%= user.join_date %></td>
-
-        <td><%= user.city %></td>
-        <!-- # state -->
-        <td><%= user.state %></td>
-        <!-- # orders -->
+        <% if user.shipping_id %>
+          <td><%= user.city %></td>
+          <td><%= user.state %></td>
+        <% else %>
+          <td> - </td>
+          <td> - </td>
+        <% end %>
         <td><%= link_to "#{user.num_orders}", order_history_path(user) %></td>
         <td><%= user.last_order_date %></td>
         <td><%= link_to("SHOW", user_path(user)) %></td>

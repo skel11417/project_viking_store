@@ -24,12 +24,15 @@
       <td>555.123.4567</td>
     </tr>
   </table>
-  <p><b>Default Billing Adddress:</b>
-    <br><%= @user.bill_address_to_s %>
-  </p>
-  <p><b>Default Shipping Adddress:</b>
-    <br><%= @user.ship_address_to_s %>
-  </p>
+  <% if @user.addresses.first %>
+    <p><b>Default Billing Adddress:</b>
+      <br><%= @user.bill_address_to_s %>
+    </p>
+    <p><b>Default Shipping Adddress:</b>
+      <br><%= @user.ship_address_to_s %>
+    </p>
+  <% end %>
+
   <p><%= link_to("Edit #{@user.full_name}'s Information", edit_user_path) %>
   <br><%= link_to("Delete #{@user.full_name}", @user, :method => :delete,
     data: { confirm: "Are you sure?" }) %>
